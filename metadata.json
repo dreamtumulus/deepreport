@@ -1,0 +1,5 @@
+{
+  "name": "OmniReport - Deep Research Agent",
+  "description": "A professional public opinion report generation system inspired by Gemini. It conducts deep web research, aggregates real citations, and generates comprehensive analysis reports.",
+  "requestFramePermissions": []
+}
