@@ -15,7 +15,7 @@ export const searchTavily = async (query: string, apiKey: string): Promise<Searc
         query: query,
         search_depth: "advanced",
         include_answer: false,
-        max_results: 5,
+        max_results: 10,
         topic: "general", // "news" is also an option but general is often better for broad research
       }),
     });

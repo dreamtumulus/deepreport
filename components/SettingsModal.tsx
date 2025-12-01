@@ -53,20 +53,29 @@ const SettingsModal: React.FC<SettingsModalProps> = ({ isOpen, onClose, config, 
             <p className="text-xs text-gray-500 mt-1">用于驱动 LLM 生成报告内容。</p>
           </div>
 
-          {/* Model Selection */}
+          {/* Model Selection (Input + Datalist for Custom Support) */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              选择模型 (Select Model)
+              模型 ID (Model ID)
             </label>
-            <select
-              value={localConfig.model}
-              onChange={(e) => setLocalConfig({ ...localConfig, model: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-white"
-            >
-              {DEFAULT_MODELS.map(m => (
-                <option key={m.id} value={m.id}>{m.name}</option>
-              ))}
-            </select>
+            <div className="relative">
+              <input
+                list="model-options"
+                type="text"
+                value={localConfig.model}
+                onChange={(e) => setLocalConfig({ ...localConfig, model: e.target.value })}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all bg-white placeholder-gray-400"
+                placeholder="输入或选择模型 (例如: google/gemini-2.0-flash-001)"
+              />
+              <datalist id="model-options">
+                {DEFAULT_MODELS.map(m => (
+                  <option key={m.id} value={m.id}>{m.name}</option>
+                ))}
+              </datalist>
+            </div>
+            <p className="text-xs text-gray-500 mt-1">
+              支持输入 OpenRouter 上的任意模型 ID，也可以从预设列表中选择。
+            </p>
           </div>
 
           {/* Tavily Key */}
